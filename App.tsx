@@ -1,22 +1,10 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import Navigation from './navigations/navigation';
+import { SafeAreaView, Text, View } from "react-native";
+import Navigation from "./navigations/navigation";
+
+// Screens :
+import Home from "./screens/Home";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>HEllo</Text>
-       
-      {/* <Navigation /> */}
-    </View>
-  );
+  /* <Navigation /> */
+  return <Home />;
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
