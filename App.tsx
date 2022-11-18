@@ -1,10 +1,5 @@
-import { SafeAreaView, Text, View } from "react-native";
-import Navigation from "./navigations/navigation";
-
-// Screens :
-import Home from "./screens/Home";
+import Navigation from "./navigation";
 
 export default function App() {
-  /* <Navigation /> */
-  return <Home />;
+  return <Navigation />;
 }
