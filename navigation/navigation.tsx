@@ -3,7 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
 
 // Screens :
-import { Home } from "../screens";
+import { About, Home } from "../screens";
 
 const Stack = createNativeStackNavigator();
 
@@ -14,6 +14,10 @@ const routes = [
     name: "Home",
     component: Home,
   },
+  {
+    name: "About",
+    component: About,
+  },
   // ...
 ];
 
@@ -21,9 +25,16 @@ const Navigation: React.FC = () => {
   return (
     <NavigationContainer>
       {/*                                //* "Home" */}
-      <Stack.Navigator initialRouteName={routes[0].name}>
+      <Stack.Navigator
+        screenOptions={{ headerShown: false }}
+        initialRouteName={routes[0].name}
+      >
         {routes.map((route) => (
-          <Stack.Screen name={route.name} component={route.component} />
+          <Stack.Screen
+            key={route.name}
+            name={route.name}
+            component={route.component}
+          />
         ))}
       </Stack.Navigator>
     </NavigationContainer>
