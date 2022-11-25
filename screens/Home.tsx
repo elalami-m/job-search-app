@@ -14,10 +14,24 @@ const Home: React.FC<Props> = ({ navigation }) => {
       <View className="flex-1 justify-center items-center bg-gray-200 p-4">
         <Text className="font-bold text-2xl">Home</Text>
         <TouchableOpacity
-          className="bg-primary-300 px-8 py-3 rounded mt-5"
+          className="bg-primary-500 px-8 py-3 rounded mt-5"
           onPress={() => navigation.navigate("About")}
         >
           <Text className="text-white font-bold text-2xl">About</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          className="bg-primary-500 px-8 py-3 rounded mt-5"
+          onPress={() => navigation.navigate("Register")}
+        >
+          <Text className="text-white font-bold text-2xl">Register</Text>
+        </TouchableOpacity>
+
+        {/* Login */}
+        <TouchableOpacity
+          className="bg-primary-500 px-8 py-3 rounded mt-5"
+          onPress={() => navigation.navigate("Login")}
+        >
+          <Text className="text-white font-bold text-2xl">Login</Text>
         </TouchableOpacity>
       </View>
     </AndroidSafeAreaView>

@@ -3,7 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
 
 // Screens :
-import { About, Home } from "../screens";
+import { About, Home, Login, Register } from "../screens";
 
 const Stack = createNativeStackNavigator();
 
@@ -18,19 +18,17 @@ const routes = [
     name: "About",
     component: About,
   },
-  // ...
+  // authRoutes
+  // ! Sorry for the name editing!
+  {
+    name: "Login",
+    component: Login,
+  },
+  {
+    name: "Register",
+    component: Register,
+  },
 ];
-
-const authRoutes = [
-  {
-    name: "Signin",
-    component: "Signin"
-  },
-  {
-    name: "Signup",
-    component: "Signup"
-  },
-]
 
 const Navigation: React.FC = () => {
   return (
