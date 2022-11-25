@@ -21,6 +21,17 @@ const routes = [
   // ...
 ];
 
+const authRoutes = [
+  {
+    name: "Signin",
+    component: "Signin"
+  },
+  {
+    name: "Signup",
+    component: "Signup"
+  },
+]
+
 const Navigation: React.FC = () => {
   return (
     <NavigationContainer>
