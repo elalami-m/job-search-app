@@ -14,7 +14,7 @@ const Home: React.FC<Props> = ({ navigation }) => {
       <View className="flex-1 justify-center items-center bg-gray-200 p-4">
         <Text className="font-bold text-2xl">Home</Text>
         <TouchableOpacity
-          className="bg-blue-600 px-8 py-3 rounded mt-5"
+          className="bg-primary-300 px-8 py-3 rounded mt-5"
           onPress={() => navigation.navigate("About")}
         >
           <Text className="text-white font-bold text-2xl">About</Text>
