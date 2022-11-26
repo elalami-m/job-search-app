@@ -1,22 +1,29 @@
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { ParamListBase } from "@react-navigation/native";
 import { Button, Icon } from "@rneui/themed";
 import { View, Text } from "react-native";
 import React from "react";
 
 type Props = {
-  navigation: NativeStackNavigationProp<ParamListBase, "GoBack">;
+  back: () => void;
 };
 
-const GoBack: React.FC<Props> = ({ navigation }) => {
+const GoBack: React.FC<Props> = ({ back }) => {
   return (
-    <View className="flex justify-start items-center p-4">
-      <Button>
+    <Button
+      onPress={() => back()}
+      buttonStyle={{ backgroundColor: "#f3f4f6", width: "100%" }}
+      containerStyle={{ width: "100%" }}
+    >
+      <View className="w-full flex flex-row justify-start items-center">
         {/* TODO: Add Arrow Left Icon */}
-        <Icon name="keyboard_arrow_left" type="material" />
-        <Text className="font-bold text-2xl">back</Text>
-      </Button>
-    </View>
+        <Icon
+          size={40}
+          color={"rgb(55, 65, 81)"}
+          name="keyboard-arrow-left"
+          type="material"
+        />
+        <Text className="font-bold text-2xl text-gray-700">back</Text>
+      </View>
+    </Button>
   );
 };
 
