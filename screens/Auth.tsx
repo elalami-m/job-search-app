@@ -16,7 +16,9 @@ const Auth: React.FC<Props> = ({ navigation }) => {
       <View className="flex-1 justify-center items-center bg-gray-200 py-8 px-3">
         <View className="flex-1 flex-row justify-center items-center bg-gray-200 p-4">
           <View className="flex-row justify-center items-center bg-gray-200 p-4">
-            <Text className="font-bold text-3xl">Joby | </Text>
+            <Text className="font-bold text-3xl">
+              Job<Text className="text-primary-600">y</Text> |{" "}
+            </Text>
             <Text className="font-semibold text-base">Find opportunities</Text>
           </View>
         </View>
