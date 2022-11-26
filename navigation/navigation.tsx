@@ -3,11 +3,11 @@ import { NavigationContainer } from "@react-navigation/native";
 import React, { useState } from "react";
 
 // Screens :
-import { About, Home, Login, Register } from "../screens";
+import { About, Auth, Home, Login, Register } from "../screens";
 
-const RootStack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator();
 
-const AuthStack = createNativeStackNavigator();
+// const AuthStack = createNativeStackNavigator();
 
 // ? Define new routes here :
 // RootRoutes :
@@ -20,12 +20,14 @@ const rootRoutes = [
     name: "About",
     component: About,
   },
-  
-  
 ];
 
 // AuthRoutes
 const authRoutes = [
+  {
+    name: "Auth",
+    component: Auth,
+  },
   {
     name: "Login",
     component: Login,
@@ -34,51 +36,37 @@ const authRoutes = [
     name: "Register",
     component: Register,
   },
-  
-  
 ];
 
 const Navigation: React.FC = () => {
-
-  let [user, setUser] = useState(false)
+  let [user, setUser] = useState(null);
 
   return (
     <NavigationContainer>
-      {/*                                //* "Home" */}
-      {
-        user ? //if user loged in :
-          (
-            <RootStack.Navigator
-              screenOptions={{ headerShown: false }}
-              initialRouteName={rootRoutes[0].name}
-            >
-              {rootRoutes.map((route) => (
-                <RootStack.Screen
-                  key={route.name}
-                  name={route.name}
-                  component={route.component}
-                />
-              ))}
-            </RootStack.Navigator>
-          ) :
-          // else render the auth stack
-          (
-            <AuthStack.Navigator
-              screenOptions={{ headerShown: false }}
-              initialRouteName={authRoutes[0].name}
-            >
-              {authRoutes.map((route) => (
-                <AuthStack.Screen
-                  key={route.name}
-                  name={route.name}
-                  component={route.component}
-                />
-              ))}
-            </AuthStack.Navigator>
-          )
-      
-      }
-      
+      <Stack.Navigator
+        screenOptions={{ headerShown: user ? false : true }}
+        initialRouteName={user ? rootRoutes[0].name : authRoutes[0].name}
+      >
+        {user //if user loged in :
+          ? rootRoutes.map((route) => (
+              <Stack.Screen
+                key={route.name}
+                name={route.name}
+                component={route.component}
+              />
+            ))
+          : // else render the auth stack
+            authRoutes.map((route) => (
+              <Stack.Screen
+                options={{
+                  headerShown: route.name === "Auth" ? false : true,
+                }}
+                key={route.name}
+                name={route.name}
+                component={route.component}
+              />
+            ))}
+      </Stack.Navigator>
     </NavigationContainer>
   );
 };
