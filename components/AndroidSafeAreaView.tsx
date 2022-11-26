@@ -4,12 +4,17 @@ import React from "react";
 type Props = {
   children: JSX.Element | JSX.Element[];
   className?: string;
+  removePaddingTop?: boolean;
 };
 
-const AndroidSafeAreaView: React.FC<Props> = ({ children, className }) => {
+const AndroidSafeAreaView: React.FC<Props> = ({
+  children,
+  removePaddingTop,
+  className,
+}) => {
   return (
     <SafeAreaView
-      style={styles.AndroidSafeAreaView}
+      style={!removePaddingTop && styles.AndroidSafeAreaView}
       className={className ?? ""}
     >
       {children}

@@ -34,11 +34,13 @@ const Auth: React.FC<Props> = ({ navigation }) => {
               marginTop: 10,
               width: "100%",
             }}
+            onPress={() => navigation.navigate("Login")}
           >
             Login
           </Button>
           <Text className="text-lg">Or</Text>
           <Button
+            onPress={() => navigation.navigate("Register")}
             buttonStyle={{
               backgroundColor: "transparent",
               borderColor: colors.primary["600"],
