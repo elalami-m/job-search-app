@@ -52,18 +52,20 @@ const Navigation: React.FC = () => {
               <Stack.Screen
                 key={route.name}
                 name={route.name}
-                component={route.component}
+              component={route.component}
+              
               />
             ))
           : // else render the auth stack
             authRoutes.map((route) => (
               <Stack.Screen
                 options={{
-                  headerShown: route.name === "Auth" ? false : true,
+                  headerShown:  false,
                 }}
                 key={route.name}
                 name={route.name}
                 component={route.component}
+                
               />
             ))}
       </Stack.Navigator>
