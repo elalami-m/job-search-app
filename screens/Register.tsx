@@ -1,7 +1,7 @@
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { ParamListBase } from "@react-navigation/native";
 import { AndroidSafeAreaView, ButtonComponent, GoBack, Header, Line, TextInputComponent } from "../components";
-import { View, Text, TextInput, Platform, TouchableOpacity, TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView } from "react-native";
+import { View, Text, TextInput, Platform, ScrollView, TouchableOpacity, TouchableWithoutFeedback, Keyboard, KeyboardAvoidingView } from "react-native";
 import { Ionicons, AntDesign, MaterialCommunityIcons, Foundation, FontAwesome5, FontAwesome } from '@expo/vector-icons';
 import React from "react";
 import { Button } from "@rneui/base";
@@ -27,10 +27,11 @@ const Register: React.FC<Props> = ({ navigation }) => {
               leftComponent={<GoBack back={() => navigation.goBack()} />}
             />
             <View className="flex-1 p-4">
+              
               <Text className="text-xl font-extrabold text-primary-600">Joby</Text>
               <Text className="text-2xl font-bold mt-3">Registration</Text>
               <Text className="text-gray-400">Let’s Register. Apply to jobs!</Text>
-              <View className="mt-8 space-y-4">
+              <ScrollView className="mt-8 space-y-4">
                 <View>
                   <TextInputComponent
                     placeholder="Full Name"
@@ -91,8 +92,9 @@ const Register: React.FC<Props> = ({ navigation }) => {
                     <Text className="text-primary-600">Log in</Text>
                   </TouchableOpacity>
                 </View>
-              </View>
+                </ScrollView>
             </View>
+            
           </View>
         </TouchableWithoutFeedback>
       </KeyboardAvoidingView>
