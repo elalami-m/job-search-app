@@ -1,71 +1,69 @@
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
-import { Ionicons } from '@expo/vector-icons';
-import {useState, ReactElement, FunctionComponent} from "react"
+import {
+  View,
+  TextInput,
+  TouchableOpacity,
+  KeyboardTypeOptions,
+} from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import { useState, ReactElement, FunctionComponent } from "react";
+import { colors } from "../constant";
 
 type Props = {
-    placeholder?: string,
-    className?: string,
-    type?: ('text' | 'password' | 'numeric'),
-    password?: boolean,
-    leftIcon?: JSX.Element | ReactElement | FunctionComponent,
+  placeholder?: string;
+  className?: string;
+  type?: KeyboardTypeOptions;
+  password?: boolean;
+  leftIcon?: JSX.Element | ReactElement | FunctionComponent;
 };
 
-const TextInputComponent: React.FC<Props> = ({ 
-    placeholder,
-    className,
-    type,
-    password,
-    leftIcon
+const TextInputComponent: React.FC<Props> = ({
+  placeholder,
+  className,
+  password,
+  leftIcon,
+  type,
 }) => {
-    
-    const [eye, setEye] = useState(true)
+  // for password input only :
+  const [eye, setEye] = useState(true);
 
-    const hideShow = () => {
-        setEye(!eye)
+  const showText = () => {
+    setEye(!eye);
+  };
 
-    }
-
-    let addWidth = 8
-
-    // Add width while some compnent is undefined
-    leftIcon == undefined ? addWidth += 2 : null
-    !password ? addWidth += 2 : null
-
-    console.log(addWidth);
-
-    return (
-        <View className={`flex flex-row justify-between ${className}`}>
-            {
-                leftIcon !== undefined ? (
-                    <View className="justify-center items-center w-2/12">
-                        {typeof (leftIcon) === 'function' ? leftIcon() : leftIcon}
-                    </View>
-                ) : 
-                    null
-            }
-
-            
-            
-            <TextInput
-                placeholder={placeholder}
-                secureTextEntry={!password ? false : eye }
-                className={` ${!password && leftIcon == undefined ? "w-full pl-4" : `w-${addWidth}/12`}`}
-            />
-            {
-                password ? (
-                    <TouchableOpacity
-                        className="w-2/12 justify-center items-center"
-                        onPress={hideShow}
-                    >
-                        <Ionicons name={eye ? "eye" : "eye-off"} size={22} color="#d1d5dd" />
-                    </TouchableOpacity>
-                ) :
-                    (
-                        null
-                    )
-            }
+  return (
+    <View
+      className={`flex-row justify-between ${
+        className ?? ""
+      } focus:border-primary-0 focus:border-2`}
+    >
+      {leftIcon && (
+        <View className="justify-center items-center px-2">
+          {typeof leftIcon === "function" ? leftIcon({}) : leftIcon}
         </View>
-    );
+      )}
+
+      <TextInput
+        className={`flex-1 p-2`}
+        secureTextEntry={!password ? false : eye}
+        placeholderTextColor={colors.gray[400]}
+        placeholder={placeholder ?? ""}
+        cursorColor={colors.primary[0]}
+        keyboardType={type}
+      />
+      {password && (
+        <TouchableOpacity
+          className="px-2 justify-center items-center"
+          onPress={showText}
+        >
+          <Ionicons
+            name={eye ? "eye" : "eye-off"}
+            size={22}
+            color={colors.gray[300]}
+          />
+        </TouchableOpacity>
+      )}
+    </View>
+  );
 };
 
 export default TextInputComponent;
