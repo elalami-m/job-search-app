@@ -3,7 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import React, { useState } from "react";
 
 // Screens :
-import { About, Auth, Home, Login, Register } from "../screens";
+import { About, Auth, ForgotPass, Home, Login, Register } from "../screens";
 
 const Stack = createNativeStackNavigator();
 
@@ -35,6 +35,10 @@ const authRoutes = [
   {
     name: "Register",
     component: Register,
+  },
+  {
+    name: "ForgotPass",
+    component: ForgotPass,
   },
 ];
 

@@ -5,7 +5,7 @@ import {
   KeyboardTypeOptions,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { useState, ReactElement, FunctionComponent } from "react";
+import { useState, ReactElement, FunctionComponent, useRef } from "react";
 import { colors } from "../constant";
 
 type Props = {
@@ -26,19 +26,26 @@ const TextInputComponent: React.FC<Props> = ({
   // for password input only :
   const [eye, setEye] = useState(true);
 
+  const [text, setText] = useState("")
+
   const showText = () => {
     setEye(!eye);
   };
 
+  const handelChange = (text: any) => {
+    setText(text)
+    console.log(text)
+  }
+  
   return (
     <View
       className={`flex-row justify-between ${
         className ?? ""
-      } focus:border-primary-0 focus:border-2`}
+      } ${ text != "" && "border-black" } focus:border-primary-0 focus:border-2`}
     >
       {leftIcon && (
         <View className="justify-center items-center px-2">
-          {typeof leftIcon === "function" ? leftIcon({}) : leftIcon}
+          {typeof leftIcon === "function" ? leftIcon(text != "" ? "black" : undefined) : leftIcon}
         </View>
       )}
 
@@ -49,6 +56,7 @@ const TextInputComponent: React.FC<Props> = ({
         placeholder={placeholder ?? ""}
         cursorColor={colors.primary[0]}
         keyboardType={type}
+        onChangeText={handelChange}
       />
       {password && (
         <TouchableOpacity
@@ -58,7 +66,7 @@ const TextInputComponent: React.FC<Props> = ({
           <Ionicons
             name={eye ? "eye" : "eye-off"}
             size={22}
-            color={colors.gray[300]}
+            color={text !== "" ? "black" : colors.gray[300]}
           />
         </TouchableOpacity>
       )}

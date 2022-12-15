@@ -46,7 +46,7 @@ const Login: React.FC<Props> = ({ navigation }) => {
               </Text>
               <Text className="text-2xl font-bold my-3">Welcom Back</Text>
               <Text className="text-gray-400">Let’s login. Apply to jobs!</Text>
-              <ScrollView className="mt-8 space-y-4">
+              <ScrollView className=" mt-8 space-y-4">
                 <View>
                   <TextInputComponent
                     className="border-[1px] my-2 border-gray-300 rounded-lg"
@@ -85,11 +85,13 @@ const Login: React.FC<Props> = ({ navigation }) => {
                   >
                     Login
                   </Button>
-
+                  <TouchableOpacity
+                  onPress={()=>navigation.navigate('ForgotPass')}
+                  >
                   <Text className="my-3 text-center font-semibold text-primary-0">
                     Forgot Password?
                   </Text>
-
+                    </TouchableOpacity>
                   <Line className="my-8" contentText="Or continue with" />
 
                   <View className="flex flex-row justify-between py-3 px-10 my-4">
@@ -108,7 +110,7 @@ const Login: React.FC<Props> = ({ navigation }) => {
                   <View className="flex flex-row justify-center space-x-2 pt-5">
                     <Text className="text-gray-400">Haven't an account?</Text>
                     <TouchableOpacity
-                      onPress={() => navigation.push("Register")}
+                      onPress={() => navigation.navigate("Register")}
                     >
                       <Text className="text-primary-600">Register</Text>
                     </TouchableOpacity>

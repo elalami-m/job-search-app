@@ -28,7 +28,7 @@ import {
   AntDesign,
 } from "@expo/vector-icons";
 import { GoogleIcon } from "../components/icons/RegisterIcons";
-import { Button } from "@rneui/base";
+import { Button, color } from "@rneui/base";
 import React from "react";
 
 type Props = {
@@ -61,7 +61,7 @@ const Register: React.FC<Props> = ({ navigation }) => {
                     placeholder="Full Name"
                     className="border-[1px] border-gray-300  h-12 rounded-lg"
                     leftIcon={
-                      <AntDesign name="user" size={19} color="#d1d5dd" />
+                      (color = "#d1d5dd" )=><AntDesign name="user" size={19} color={color} />
                     }
                   />
                 </View>
@@ -70,10 +70,11 @@ const Register: React.FC<Props> = ({ navigation }) => {
                     placeholder="E-mail"
                     className="border-[1px] border-gray-300  h-12 rounded-lg"
                     leftIcon={
+                      (color = "#d1d5dd" )=>
                       <MaterialCommunityIcons
                         name="email-outline"
                         size={19}
-                        color="#d1d5dd"
+                        color={color}
                       />
                     }
                   />
@@ -84,7 +85,8 @@ const Register: React.FC<Props> = ({ navigation }) => {
                     className="border-[1px] border-gray-300  h-12 rounded-lg"
                     password
                     leftIcon={
-                      <Foundation name="key" size={19} color="#d1d5dd" />
+                      (color = "#d1d5dd"  )=>
+                      <Foundation name="key" size={19} color={color} />
                     }
                   />
                 </View>
@@ -94,7 +96,8 @@ const Register: React.FC<Props> = ({ navigation }) => {
                     className="border-[1px] border-gray-300  h-12 rounded-lg"
                     password
                     leftIcon={
-                      <Foundation name="key" size={19} color="#d1d5dd" />
+                      (color = "#d1d5dd" )=>
+                      <Foundation name="key" size={19} color={color} />
                     }
                   />
                 </View>
@@ -119,7 +122,7 @@ const Register: React.FC<Props> = ({ navigation }) => {
                 </View>
                 <View className="flex flex-row justify-center space-x-2 pt-5">
                   <Text className="text-gray-400">Have an account?</Text>
-                  <TouchableOpacity onPress={() => navigation.push("Login")}>
+                  <TouchableOpacity onPress={() => navigation.navigate("Login")}>
                     <Text className="text-primary-600">Log in</Text>
                   </TouchableOpacity>
                 </View>
